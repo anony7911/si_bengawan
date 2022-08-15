@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
         {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-light">SPK Seleksi Beasiswa</span>
+        <span class="brand-text font-weight-light">Your App Name</span>
     </a>
 
     <div class="sidebar">
@@ -25,39 +25,6 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/alternatif') }}" class="nav-link @if(request()->is('alternatif')) active @endif">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Alternatif
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/kriteria') }}" class="nav-link @if(request()->is('kriteria')) active @endif">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Kriteria
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/perhitungan') }}" class="nav-link @if(request()->is('perhitungan')) active @endif">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Hasil Perhitungan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/rekomendasi') }}" class="nav-link @if(request()->is('rekomendasi')) active @endif">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Hasil Rekomendasi
                         </p>
                     </a>
                 </li>
