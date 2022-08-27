@@ -29,6 +29,7 @@ class DataManajuser extends Component
         $this->name = '';
         $this->email = '';
         $this->password = '';
+        $this->role = '';
     }
 
     public function render()
@@ -49,6 +50,8 @@ class DataManajuser extends Component
 
         $this->name = $manajuser->name;
         $this->email = $manajuser->email;
+        $this->role = $manajuser->role;
+        $this->active = $manajuser->active;
     }
 
     public function store()
@@ -57,12 +60,14 @@ class DataManajuser extends Component
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'role' => 'required',
         ]);
 
         User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
+            'role' => $this->role,
         ]);
 
         $this->resetInput();
@@ -77,12 +82,14 @@ class DataManajuser extends Component
             $manajuser->update([
                 'name' => $this->name,
                 'email' => $this->email,
+                'role' => $this->role,
             ]);
         } else {
             $manajuser->update([
                 'name' => $this->name,
                 'email' => $this->email,
                 'password' => bcrypt($this->password),
+                'role' => $this->role,
             ]);
         }
 
@@ -95,5 +102,23 @@ class DataManajuser extends Component
         $manajuser = User::findOrFail($id);
         $manajuser->delete();
         session()->flash('error', 'Data berhasil dihapus');
+    }
+
+    public function nonaktif($id)
+    {
+        $manajuser = User::findOrFail($id);
+        $manajuser->update([
+            'active' => 0,
+        ]);
+        session()->flash('error', 'Data berhasil dinonaktifkan');
+    }
+
+    public function aktif($id)
+    {
+        $manajuser = User::findOrFail($id);
+        $manajuser->update([
+            'active' => 1,
+        ]);
+        session()->flash('success', 'Data berhasil diaktifkan');
     }
 }

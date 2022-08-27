@@ -32,6 +32,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -42,16 +43,22 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $manajuser->name }}</td>
                                 <td>{{ $manajuser->email }}</td>
+                                <td>{{ ucfirst($manajuser->role) }}</td>
                                 <td>@if($manajuser->active == 1)
                                     <span class="badge badge-success">Aktif</span>
                                     @else
                                     <span class="badge badge-danger">Tidak Aktif</span>
                                     @endif</td>
                                 <td>
-                                    <button wire:click="manajuserId({{ $manajuser->id }})" class="btn btn-sm btn-warning m-1" data-toggle="modal" data-target="#modalEdit">
+                                    @if($manajuser->active == 1)
+                                    <button wire:click="nonaktif({{ $manajuser->id }})" class="btn btn-sm btn-warning text-white" data-toggle="tooltipe" title="Nonaktifkan"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                                    @else
+                                    <button wire:click="aktif({{ $manajuser->id }})" class="btn btn-sm btn-success" data-toggle="tooltipe" title="Aktifkan"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                    @endif
+                                    <button wire:click="manajuserId({{ $manajuser->id }})" class="btn btn-sm btn-info m-1" data-toggle="modal" data-target="#modalEdit" title="Update">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </button>
-                                    <button wire:click="delete({{ $manajuser->id }})" class="btn btn-sm btn-danger">
+                                    <button wire:click="delete({{ $manajuser->id }})" class="btn btn-sm btn-danger" data-toggle="tooltipe" title="Hapus">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>
@@ -91,6 +98,14 @@
                         @error('password')<div class="invalid-feedback">{{ $message }}
                         </div>@enderror
                     </div>
+                    <div class="form-group mb-2">
+                        <label>Role</label>
+                        <select wire:model="role" class="form-control">
+                            <option value="admin">Karyawan</option>
+                            <option value="pemilik">Pemilik</option>
+                            <option value="pelanggan">Pelanggan</option>
+                        </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal" data-dismiss="modal">Close</button>
                         <button type="submit" wire:click.prevent="store()" class="btn btn-info close-modal" data-dismiss="modal">Tambah</button>
@@ -128,6 +143,15 @@
                         @error('password')<div class="invalid-feedback">{{ $message }}
                         </div>@enderror
                     </div>
+                    <div class="form-group mb-2">
+                        <label>Role</label>
+                        <select wire:model="role" class="form-control">
+                            <option value="karyawan" @if($manajuser->role == 'karyawan') selected @endif>Karyawan</option>
+                            <option value="pemilik" @if($manajuser->role == 'pemilik') selected @endif>Pemilik</option>
+                            <option value="pelanggan" @if($manajuser->role == 'pelanggan') selected @endif>Pelanggan</option>
+                        </select>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal" data-dismiss="modal">Close</button>
                         <button type="submit" wire:click.prevent="update()" class="btn btn-info close-modal" data-dismiss="modal">Update</button>

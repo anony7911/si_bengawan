@@ -29,6 +29,46 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('/barang') }}" class="nav-link @if(request()->is('barang')) active @endif">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Data Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/pelanggan') }}" class="nav-link @if(request()->is('pelanggan')) active @endif">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Data Pelanggan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/pesanan') }}" class="nav-link @if(request()->is('pesanan')) active @endif">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Pesanan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/pembayaran') }}" class="nav-link @if(request()->is('pembayaran')) active @endif">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Pembayaran
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/laporan') }}" class="nav-link @if(request()->is('laporan')) active @endif">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Laporan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('/manajuser') }}" class="nav-link @if(request()->is('manajuser')) active @endif">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
