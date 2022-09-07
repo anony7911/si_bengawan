@@ -17,7 +17,7 @@ class CreatePesanansTable extends Migration
             $table->id();
             $table->integer('detail_pesanan_id');
             $table->integer('total_harga');
-            $table->date('tanggal_konfirmasi');
+            $table->date('tanggal_konfirmasi')->nullable();
             $table->string('catatan_pegawai')->nullable();
             $table->timestamps();
         });
